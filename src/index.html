@@ -1,32 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="styles.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus App</title>
-        <script type="module" src="/main.js" defer></script>
-    </head>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈稷的回礼</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 左上角 背景音乐 -->
+    <div class="music-player">
+        <button class="music-btn" id="musicToggle">
+            <img class="music-icon" id="musicIcon" src="./img/icon-music.svg"/>
+        </button>
+        <audio id="backgroundMusic" loop>
+            <source src="./music/background.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <main class="main-container">
+        <section class="section">
+            <div class="card fade-in">
+                <img src="./img/img1.png" style="width: 100%">
+            </div>
+            <div class="section-content card scale-up">
+                <h1 class="poetry-text">“替我看千千万万场日出.....”</h1>
+            </div>
+        </section>
 
-    <body>
-        <main class="container">
-            <h1>Welcome to PakePlus</h1>
-            <form class="row" id="greet-form">
-                <input id="inputValue" placeholder="Enter a something..." />
-            </form>
-            <div class="resultBox">
-                <span>result: </span>
-                <span id="result"></span>
+        <section class="section">
+            <div class="timeline-container">
+                <svg class="timeline-curve" viewBox="0 0 1000 3000" preserveAspectRatio="none">
+                    <!-- 主要S形曲线 -->
+                    <path id="timeline-path" d="M 500,100 C 300,300 300,500 500,700 C 700,900 700,1100 500,1300 C 300,1500 300,1700 500,1900 C 700,2100 700,2300 500,2500"
+                          stroke="rgba(255,255,255,0.3)" stroke-width="4" fill="none" stroke-dasharray="10,5"/>
+
+                    <!-- 装饰性背景曲线 -->
+                    <path d="M 500,50 C 250,250 250,550 500,750 C 750,950 750,1250 500,1450 C 250,1650 250,1950 500,2150 C 750,2350 750,2650 500,2850"
+                          stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none" opacity="0.5"/>
+                </svg>
+
+                <!-- 日出照片 -->
+                <div class="card fade-in">
+                    <img src="./img/part2/rw/1.png" style="width: 20%;margin-left: 10%;">
+                    <img src="./img/part2/rc/rc1.png" style="width: 40%;height: 100px;margin-left: 10px">
+                </div>
+                <div class="card fade-in">
+                    <img src="./img/part2/rw/2.png" style="width: 20%;;margin-left: 20%">
+                    <img src="./img/part2/rc/rc2.png" style="width: 40%;height: 100px;margin-left: 10px">
+                </div>
+                <div class="card fade-in">
+                    <img src="./img/part2/rw/3.png" style="width: 20%; margin-left: 30%">
+                    <img src="./img/part2/rc/rc3.png" style="width: 40%;height: 100px;margin-left: 10px">
+                </div>
+                <div class="card fade-in">
+                    <img src="./img/part2/rc/rc4.png" style="width: 40%; height: 100px; margin-right: 10px;margin-left: 10%">
+                    <img src="./img/part2/rw/4.png" style="width: 20%;">
+                </div>
+                <div class="card fade-in">
+                    <img src="./img/part2/rc/rc5.png" style="width: 40%; height: 100px; margin-right: 10px;margin-left: 20%">
+                    <img src="./img/part2/rw/5.png" style="width: 20%;">
+                </div>
+
             </div>
-            <div class="invokeBox">
-                <button id="openUrl">open_url_browser</button>
-                <button id="openUrlNew">open_url_new</button>
-                <button id="runCommand">run_command</button>
-                <button id="downloadFile">download_file</button>
-                <button id="getExeDir">get_exe_dir</button>
-                <button id="getEnvVar">get_env_var</button>
-                <button id="findPort">find_port</button>
+        </section>
+
+        <div>
+            <div class="section-content card scale-up" style="height: 100vh">
+                <h2 class="poetry-text">“铃铛一响，千山万水来相见”</h2>
+                <div class="bell-container">
+                    <div class="bell" id="bell">
+                        <div class="bell-body"></div>
+                        <div class="bell-clapper"></div>
+                    </div>
+                </div>
+                <br/>
+                <div class="reveal-text" id="revealText">
+                    天涯何处寻<br/>
+                    岁月几回迁<br/>
+                    若闻清铎响<br/>
+                    犹见故人颜<br/>
+                </div>
             </div>
-        </main>
-    </body>
+            <audio id="bellSound" preload="auto">
+                <source src="./music/bell.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div>
+            <div class="card scale-up">
+                <img src="./img/part3/1.jpg" class="photo" style="margin-left: 10%">
+            </div>
+
+            <div class="card scale-up">
+                <img src="./img/part3/2.jpg" class="photo" style="margin-left: 40%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/3.jpg" class="photo" style="margin-left: 10%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/4.jpg" class="photo" style="margin-left: 40%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/5.jpg" class="photo" style="margin-left: 10%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/6.jpg" class="photo" style="margin-left: 40%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/7.jpg" class="photo" style="margin-left: 10%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/8.jpg" class="photo" style="margin-left: 40%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/9.jpg" class="photo" style="margin-left: 10%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/10.jpg" class="photo" style="margin-left: 40%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/11.jpg" class="photo" style="margin-left: 10%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/12.jpg" class="photo" style="margin-left: 40%">
+            </div>
+            <div class="card scale-up">
+                <img src="./img/part3/0.jpg" class="photo" style="margin-left: 20%">
+            </div>
+        </div>
+
+        <div class="section-content card scale-up">
+            <h2 class="poetry-text final-text">千千万万不及有你伴的日日夜夜</h2>
+        </div>
+
+        <div class="card fade-in">
+            <img src="./img/final.png" style="width: 100%">
+        </div>
+
+    </main>
+
+</body>
+<script src="script.js"></script>
 </html>

@@ -1,125 +1,329 @@
-.logo.vanilla:hover {
-    filter: drop-shadow(0 0 2em #ffe21c);
-}
-:root {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-
-    color: #0f0f0f;
-    background-color: #f6f6f6;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-}
-
-.container {
+/* 水墨风格基础样式 */
+* {
     margin: 0;
-    padding-top: 10vh;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'ZCOOL XiaoWei', serif;
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 音乐播放器样式 */
+.music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0.5;
+}
+
+.music-btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    outline: none;
+    opacity: 0.5;
+}
+
+.music-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+}
+
+.music-icon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+/* 旋转动画 */
+.music-btn.playing .music-icon {
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 视口 卡片出入效果 */
+/* 卡片样式 */
+.card {
+    /*background-color: black;*/
+    /*border-radius: 12px;*/
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 默认状态（离开视口） */
+.card.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* 进入视口后的状态 */
+.card.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 第二种效果：从左侧滑入 */
+.card.slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.card.slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 第三种效果：缩放浮现 */
+.card.scale-up {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.card.scale-up.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 新增效果：从右侧滑入 */
+.card.slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.card.slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* 主要页面内容 */
+.main-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-}
-
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: 0.75s;
-}
-
-.logo.tauri:hover {
-    filter: drop-shadow(0 0 2em #24c8db);
-}
-
-.row {
-    display: flex;
-    justify-content: center;
-}
-
-a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-}
-
-a:hover {
-    color: #535bf2;
-}
-
-h1 {
-    text-align: center;
-}
-
-input,
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    color: #0f0f0f;
-    background-color: #ffffff;
-    transition: border-color 0.25s;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-button {
-    cursor: pointer;
-}
-
-button:hover {
-    border-color: #396cd8;
-}
-button:active {
-    border-color: #396cd8;
-    background-color: #e8e8e8;
-}
-
-input,
-button {
-    outline: none;
-}
-
-#greet-input {
-    margin-right: 5px;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        color: #f6f6f6;
-        background-color: #2f2f2f;
-    }
-
-    a:hover {
-        color: #24c8db;
-    }
-
-    input,
-    button {
-        color: #ffffff;
-        background-color: #0f0f0f98;
-    }
-    button:active {
-        background-color: #0f0f0f69;
-    }
-}
-
-.invokeBox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    overflow: hidden;
 }
 
-.resultBox {
-    margin: 10px 0;
+.section-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+    max-width: 800px;
+    width: 100%;
 }
+
+
+/* 诗歌文本样式 */
+.poetry-text {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 2.5rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin-bottom: 30px;
+    opacity: 1;
+    transform: translateY(30px);
+}
+
+/* 第二部分 */
+/* 时间线容器 */
+.timeline-container {
+    position: relative;
+    width: 100%;
+    height: 1300px; /* 设置为3倍屏幕高度的滚动区域 */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* SVG曲线时间线 */
+.timeline-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1300px;
+    z-index: 1;
+}
+
+/* 时间线装饰元素 */
+.timeline-curve::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 1300px;
+    background: linear-gradient(to bottom,
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.1));
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* 铃铛 */
+.bell-container {
+    position: relative;
+    margin: 80px auto 30px;
+}
+
+.bell {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+    position: relative;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+}
+
+.bell:hover {
+    transform: scale(1.05);
+}
+
+.bell:active {
+    transform: scale(0.95);
+}
+
+.bell-body {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #c0c0c0, #808080);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.bell-body::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #808080;
+    border-radius: 50%;
+}
+
+.bell-clapper {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #505050;
+    border-radius: 50%;
+}
+
+.bell.ring {
+    animation: ringBell 1s ease-in-out;
+}
+@keyframes ringBell {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-15deg); }
+    30% { transform: rotate(12deg); }
+    40% { transform: rotate(-12deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(-10deg); }
+    70% { transform: rotate(5deg); }
+    80% { transform: rotate(-5deg); }
+    90% { transform: rotate(2deg); }
+}
+
+/* 铃铛提示动画 - 页面加载后轻微摆动 */
+@keyframes bellHint {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
+}
+
+/* 铃铛初始化后的提示动画 */
+.bell-container.init .bell {
+    animation: bellHint 3s ease-in-out;
+    animation-delay: 2s;
+}
+
+.bell-text {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.2rem;
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.reveal-text {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 2.5rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    max-width: 80%;
+    margin: 20px auto;
+    transition: all 1s ease;
+}
+
+.reveal-text.show {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+.photo {
+    width: 50%;
+    border-radius: 10px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 40px rgba(255, 255, 255, 0.2),
+            0 0 60px rgba(255, 255, 255, 0.1);
+    filter: brightness(1.2) contrast(1.05);
+    animation: float 6s ease-in-out infinite;
+}
+
+
+
+
